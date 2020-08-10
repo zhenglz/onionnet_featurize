@@ -10,3 +10,17 @@
 
 # DATASETS
 
+Including training, validating and testing features, as well corresponding labels.
+    
+    cd ./datasets
+    
+# Installation
+
+    conda install -c anaconda numpy pandas
+    conda install -c omnia mdtraj
+    conda install -c conda-forge biopandas
+    
+    # optional 
+    conda install -c rdkit rdkit 
+    conda install -c psi4
+    conda install -c iwatobipen psikit
