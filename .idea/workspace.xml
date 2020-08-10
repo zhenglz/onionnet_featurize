@@ -4,7 +4,6 @@
     <list default="true" id="c73261b7-85ed-49bd-a879-d2e5142fc1c2" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../CMT_Package" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../iter_refine" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/REAMDE" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pratical_tools/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pratical_tools/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pratical_tools/.idea/modules.xml" afterDir="false" />
@@ -14,6 +13,11 @@
       <change afterPath="$PROJECT_DIR$/../pratical_tools/data/casp13_gdt_seven/seven.yaml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pratical_tools/seven/evaluate_casp13_gdt.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pred_disufide" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/contact_featurizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/contact_featurizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

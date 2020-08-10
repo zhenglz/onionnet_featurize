@@ -240,7 +240,7 @@ class ProteinParser(object):
 
     def get_coordinates(self):
         """
-        Get the coordinates in the pdb file given the receptor indices.
+        Get the coordinates in the pdb file given the atom indices.
         Returns
         -------
         self : an instance of itself
@@ -280,16 +280,19 @@ class ProteinParser(object):
 
 class LigandParser(object):
     """Parse the ligand with biopanda to obtain coordinates and elements.
+
     Parameters
     ----------
     ligand_fn : str,
         The input ligand file name.
+
     Methods
     -------
+
     Attributes
     ----------
     lig : a biopandas mol2 read object
-    lig_data : a panda data object holding the atom information
+    lig_data : a panda dataframe object holding the atom information
     coordinates : np.ndarray, shape = [ N, 3]
         The coordinates of the atoms in the ligand, N is the number of atoms.
     """
@@ -325,7 +328,7 @@ class LigandParser(object):
 
     def parseMol2(self):
         if not self.mol2_parsed_:
-            if self.lig_file.split(".")[-1] != "mol2":
+            if not self.lig_file.endwith(".mol2"): #self.lig_file.split(".")[-1] != "mol2":
                 out_file = self.lig_file + ".mol2"
                 self._format_convert(self.lig_file, out_file)
                 self.lig_file = out_file
@@ -336,11 +339,14 @@ class LigandParser(object):
                 except ValueError:
                     templ_ligfile = self.lig_file + "templ.pdb"
                     self._format_convert(self.lig_file, templ_ligfile)
+                    print("INFO: Warning, parse mol2 file error, converting to PDB instead ......")
                     if os.path.exists(templ_ligfile):
                         self.lig = mt.load_pdb(templ_ligfile)
                         top = self.lig.topology
                         table, bond = top.to_dataframe()
                         self.lig_ele = list(table['element'])
+
+                        # mdtraj use nanometer as coordinates unit.
                         # nano-meter to angstrom
                         self.coordinates_ = self.lig.xyz[0] * 10.0
                         self.lig_data = table
@@ -363,6 +369,7 @@ class LigandParser(object):
 
 class CompoundBuilder(object):
     """Generate 3D coordinates of compounds.
+
     Parameters
     ----------
     in_format : str, default='smile'
@@ -410,6 +417,7 @@ class CompoundBuilder(object):
         self.optimize_status_ = False
         self.converter_ = None
         self.write_converter()
+
     def generate_conformer(self):
         """Generate 3D conformer for the molecule.
         The hydrogen atoms are added if necessary.
@@ -442,12 +450,15 @@ class CompoundBuilder(object):
         else:
             print("Load molecule first. ")
             return self
+
     def load_mol(self, mol_file):
         """Load a molecule from a file or a SMILE string
+        
         Parameters
         ----------
         mol_file : str
             The input molecule file name or a SMILE string
+
         Returns
         -------
         self : return an instance of itself

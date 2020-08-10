@@ -16,52 +16,6 @@ from .utils import LigandParser, ProteinParser
 elements_ligand = ["H", "C", "O", "N", "P", "S", "HAX", "DU"]
 elements_protein = ["H", "C", "O", "N", "P", "S", "HAX", "DU"]
 
-'''
-def split_multimol2(mol2_path):
-    r"""
-    Splits a multi-mol2 file into individual Mol2 file contents.
-
-    Parameters
-    -----------
-    mol2_path : str
-      Path to the multi-mol2 file. Parses gzip files if the filepath
-      ends on .gz.
-
-    Returns
-    -----------
-    A generator object for lists for every extracted mol2-file. Lists contain
-        the molecule ID and the mol2 file contents.
-        e.g., ['ID1234', ['@<TRIPOS>MOLECULE\n', '...']]. Note that bytestrings
-        are returned (for reasons of efficieny) if the Mol2 content is read
-        from a gzip (.gz) file.
-
-    """
-
-    open_file = open
-    read_mode = 'r'
-    check = {'rb': b'@<TRIPOS>MOLECULE', 'r': '@<TRIPOS>MOLECULE'}
-
-    mol2_data = []
-
-    with open_file(mol2_path, read_mode) as f:
-        mol2 = ['', []]
-        while True:
-            try:
-                line = next(f)
-                if line.startswith(check[read_mode]):
-                    if mol2[0]:
-                        mol2_data.append(mol2)
-                    mol2 = ['', []]
-                    mol2_id = next(f)
-                    mol2[0] = mol2_id.rstrip()
-                    mol2[1].append(line)
-                    mol2[1].append(mol2_id)
-                else:
-                    mol2[1].append(line)
-            except StopIteration:
-                mol2_data.append(mol2)
-                return mol2_data
-'''
 
 def atomic_distance(dat):
     return np.sqrt(np.sum(np.square(dat[0] - dat[1])))
@@ -77,16 +31,23 @@ def distance_pairs(coord_pro, coord_lig):
 def distance_pairs_mdtraj(coord_pro, coord_lig):
     xyz = np.concatenate((coord_pro, coord_lig), axis=0)
     #print(xyz.shape)
+    # mdtraj use nanometer for coordinations,
+    # convert angstrom to nanometer
     xyz = xyz.reshape((1, -1, 3)) * 0.1
+    # for the xyz, the sample is (N_frames, N_atoms, N_dim)
+    # N_frames, it is usually 1 for a normal single-molecule PDB
+    # N_atoms is the number of atoms in the pdb file
+    # N_dims is the dimension of coordinates, 3 here for x, y and z
 
+    # create a mdtraj Trajectory object,Topology object could be ignored.
     traj = mt.Trajectory(xyz=xyz, topology=None)
-    #print("MDTRAJ XYZ shape ", traj.xyz.shape)
-    #print("Protein index", np.arange(coord_pro.shape[0]).shape)
-    #print("Protein index", np.arange(coord_pro.shape[0]).shape)
-
+    # create a list of atom-pairs from atom index of protein and ligand
     atom_pairs = itertools.product(np.arange(coord_pro.shape[0]),
                                    np.arange(coord_pro.shape[0], coord_pro.shape[0]+coord_lig.shape[0]))
 
+    # convert the distance to angstrom from nanometer.
+    # Actually we could just leave it as angstrom from the beginning for faster calculation,
+    # but it is more reasonable to do it in order to aligning with mdtraj-style calculation.
     dist = mt.compute_distances(traj, atom_pairs)[0] * 10.0
 
     return dist
@@ -160,11 +121,13 @@ def complex_featurizer(pro_fn, lig_fn, n_cutoffs, output, mode="numpy"):
                 total_counts = 0 
 
                 if protein_xyz.shape[0] and ligand_xyz.shape[0]:
+                    # determine to use with distance calculation engine
                     if mode.lower() == "numpy":
                         distances = fast_distance_pairs(protein_xyz, ligand_xyz)
                     else:
                         distances = distance_pairs_mdtraj(protein_xyz, ligand_xyz)
-                    
+
+                    # iterative over all the distance cutoffs
                     for i, c in enumerate(n_cutoffs):
                         single_count = distance2counts((distances, c, None, '', 0.0))
                         # get the contacts in each shell by substract all contacts in previous shells
@@ -179,7 +142,7 @@ def complex_featurizer(pro_fn, lig_fn, n_cutoffs, output, mode="numpy"):
         for i in range(len(_columns)):
             _columns[i] = _columns[i] + "_" + str(i)
 
-        # we save the results for one-ligand per line/row in the dataframe
+        # save the results for one-ligand-code per line/row in the result list
         results.append(list(onionnet_counts.values.ravel()))
         results_code.append(mol2_code)
 
