@@ -30,11 +30,13 @@ def main():
        Examples:
        Show help information
        python generate_features.py -h
+       
        Run the script
        python generate_features.py -inp input_samples.dat -out features_samples.csv
        # tutorial example
-       cd tuttorials/PDB_samples
-       python ../../generate_features.py -inp input_PDB_testing.dat -out
+       
+       cd examples/single_molecule_mol2/10gs
+       python ../../generate_features.py -inp input.dat -mode \"mdtraj\"
        PDB_testing_features.csv
     """
     parser = argparse.ArgumentParser(description=d,

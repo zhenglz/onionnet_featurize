@@ -183,7 +183,7 @@ def complex_featurizer(pro_fn, lig_fn, n_cutoffs, output, mode="numpy"):
         results.append(list(onionnet_counts.values.ravel()))
         results_code.append(mol2_code)
 
-        #os.remove(fn)
+        os.remove(fn)
 
     df = pd.DataFrame(results, columns=_columns)
     df.index = results_code
