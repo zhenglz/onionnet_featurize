@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c73261b7-85ed-49bd-a879-d2e5142fc1c2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../CMT_Package" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../iter_refine" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/REAMDE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pratical_tools/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pratical_tools/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pratical_tools/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pratical_tools/.idea/pratical_tools.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pratical_tools/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pratical_tools/data/casp13_gdt_seven/main.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pratical_tools/data/casp13_gdt_seven/seven.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pratical_tools/seven/evaluate_casp13_gdt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pred_disufide" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1fo6CNqABYjHK5EXWh5ev4Gz1u4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c73261b7-85ed-49bd-a879-d2e5142fc1c2" name="Default Changelist" comment="" />
+      <created>1596871969462</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596871969462</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="569" y="324" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596876484837">
+      <screen x="0" y="23" width="1680" height="983" />
+    </state>
+    <state x="569" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.983@0.23.1680.983" timestamp="1596876484837" />
+  </component>
+</project>

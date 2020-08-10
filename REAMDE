@@ -1,0 +1,5 @@
+
+# USAGE
+
+    cd examples/multiple_molecules_mol2_CASF
+    python ../../gen_features.py -inp input.dat -out 2qbp_features.csv
