@@ -342,7 +342,7 @@ class LigandParser(object):
 
     def parseMol2(self):
         if not self.mol2_parsed_:
-            if not self.lig_file.endwith(".mol2"): #self.lig_file.split(".")[-1] != "mol2":
+            if self.lig_file.split(".")[-1] != "mol2":
                 out_file = self.lig_file + ".mol2"
                 self._format_convert(self.lig_file, out_file)
                 self.lig_file = out_file

@@ -14,9 +14,6 @@
       <change afterPath="$PROJECT_DIR$/../pratical_tools/seven/evaluate_casp13_gdt.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../pred_disufide" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/gen_features.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/contact_featurizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/contact_featurizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +52,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="439" y="180" key="#Notifications" timestamp="1597041822525">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="439" y="180" key="#Notifications/0.23.1680.1027/-1920.23.1920.1013@0.23.1680.1027" timestamp="1597041822525" />
     <state x="569" y="324" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596876484837">
       <screen x="0" y="23" width="1680" height="983" />
     </state>
