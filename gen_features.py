@@ -74,6 +74,7 @@ def main():
         sys.exit(0)
 
     USE_COLUMBIC = args.use_columbic
+    print("INFO: Featurization with mode = ", args.mode)
 
     num_threads = args.nt
     n_cutoffs = np.linspace(args.lowbound,

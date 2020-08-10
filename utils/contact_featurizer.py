@@ -71,8 +71,8 @@ def distance2counts(megadata):
             return np.multiply(atompair_in_dist_range, np.divide(charge_pairs, d))
 
 
-def complex_featurizer(pro_fn, lig_fn, n_cutoffs, output, mode="numpy"):
-    print("INFO: Processing %s and %s ..." % (pro_fn, lig_fn))
+def complex_featurizer(pro_fn, lig_fn, n_cutoffs, output, mode="mdtraj"):
+    print("INFO: Processing %s and %s ... with mode %s" % (pro_fn, lig_fn, mode))
 
     # get protein elements and protein xyz
     pro = ProteinParser(pro_fn)

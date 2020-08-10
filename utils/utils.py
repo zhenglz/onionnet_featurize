@@ -1,14 +1,21 @@
 from biopandas.mol2 import PandasMol2
-from biopandas.mol2 import split_multimol2
-from rdkit import Chem
-from rdkit.Chem import AllChem
+
+try:
+    from rdkit import Chem
+    from rdkit.Chem import AllChem
+except ModuleNotFoundError:
+    print("Rdkit is not loaded ...")
+
 import subprocess as sp
 import mdtraj as mt
 import os
 import numpy as np
 import pandas as pd
-from psikit import Psikit
-import psi4
+try:
+    from psikit import Psikit
+    import psi4
+except ModuleNotFoundError:
+    print("Psi4/psikit is not loaded ...")
 
 
 elements_ligand = ["H", "C", "O", "N", "P", "S", "HAX", "DU"]
@@ -84,6 +91,10 @@ class Molecule(object):
                 return self.molecule_
             except:
                 return None
+        else:
+            print("No such input for converting: ", mol_file)
+
+        return None
 
     def load_molecule(self, mol_file):
         """Load a molecule to have a rdkit.Chem.Molecule object
@@ -264,8 +275,11 @@ class ProteinParser(object):
         -------
         """
         top = self.pdb.topology
-        # obtain the atom indices of the protein
+
+        # obtain the atom indices of the protein (only protein atoms are selected,
+        # water and ions are discarded in this step)
         self.receptor_indices = top.select(rec_sele)
+        # get a dataframe containing the atom information.
         _table, _bond = top.to_dataframe()
 
         # fetch the element type of each one of the protein atom
@@ -337,13 +351,16 @@ class LigandParser(object):
                 try:
                     self.lig = PandasMol2().read_mol2(self.lig_file)
                 except ValueError:
-                    templ_ligfile = self.lig_file + "templ.pdb"
-                    self._format_convert(self.lig_file, templ_ligfile)
                     print("INFO: Warning, parse mol2 file error, converting to PDB instead ......")
+                    templ_ligfile = self.lig_file + "templ.pdb"
+                    # convert mol2 format to pdb format with rdkit
+                    self._format_convert(self.lig_file, templ_ligfile)
+
                     if os.path.exists(templ_ligfile):
                         self.lig = mt.load_pdb(templ_ligfile)
                         top = self.lig.topology
                         table, bond = top.to_dataframe()
+                        # get the element-type of all atoms
                         self.lig_ele = list(table['element'])
 
                         # mdtraj use nanometer as coordinates unit.
@@ -453,7 +470,7 @@ class CompoundBuilder(object):
 
     def load_mol(self, mol_file):
         """Load a molecule from a file or a SMILE string
-        
+
         Parameters
         ----------
         mol_file : str

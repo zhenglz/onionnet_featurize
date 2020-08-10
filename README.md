@@ -19,8 +19,8 @@ Including training, validating and testing features, as well corresponding label
     conda install -c anaconda numpy pandas
     conda install -c omnia mdtraj
     conda install -c conda-forge biopandas
+    conda install -c rdkit rdkit 
     
     # optional 
-    conda install -c rdkit rdkit 
     conda install -c psi4
     conda install -c iwatobipen psikit
