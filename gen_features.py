@@ -36,8 +36,8 @@ def main():
        # tutorial example
        
        cd examples/single_molecule_mol2/10gs
-       python ../../generate_features.py -inp input.dat -mode \"mdtraj\"
-       PDB_testing_features.csv
+       python ../../generate_features.py -inp input.dat -mode \"mdtraj\" 
+       
     """
     parser = argparse.ArgumentParser(description=d,
                                      formatter_class=RawDescriptionHelpFormatter)
@@ -54,8 +54,8 @@ def main():
     parser.add_argument("-upbound", type=float, default=31.0,
                         help="Input, optional. Default is 3.1 nm. "
                              "The largest distance cutoff.")
-    parser.add_argument("-lowbound", type=float, default=1.0,
-                        help="Input, optional. Default is 0.1 nm. "
+    parser.add_argument("-lowbound", type=float, default=0.5,
+                        help="Input, optional. Default is 0.05 nm. "
                              "The lowest distance cutoff.")
     parser.add_argument("-nbins", type=int, default=60,
                         help="Input, optional. Default is 60. "
