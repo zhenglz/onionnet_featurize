@@ -52,10 +52,10 @@ def main():
                         help="Input, optional. Default is 1. "
                              "Use how many of cpu cores.")
     parser.add_argument("-upbound", type=float, default=31.0,
-                        help="Input, optional. Default is 3.1 nm. "
+                        help="Input, optional. Default is 31 angstrom. "
                              "The largest distance cutoff.")
     parser.add_argument("-lowbound", type=float, default=0.5,
-                        help="Input, optional. Default is 0.05 nm. "
+                        help="Input, optional. Default is 0.5 angstrom. "
                              "The lowest distance cutoff.")
     parser.add_argument("-nbins", type=int, default=60,
                         help="Input, optional. Default is 60. "
