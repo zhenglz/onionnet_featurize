@@ -54,8 +54,8 @@ def main():
     parser.add_argument("-upbound", type=float, default=31.0,
                         help="Input, optional. Default is 31 angstrom. "
                              "The largest distance cutoff.")
-    parser.add_argument("-lowbound", type=float, default=0.5,
-                        help="Input, optional. Default is 0.5 angstrom. "
+    parser.add_argument("-lowbound", type=float, default=1.0,
+                        help="Input, optional. Default is 1.0 angstrom. "
                              "The lowest distance cutoff.")
     parser.add_argument("-nbins", type=int, default=60,
                         help="Input, optional. Default is 60. "
